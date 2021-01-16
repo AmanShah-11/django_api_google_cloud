@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     path('object', views.object_detail),
-    path('some_view', views.some_view)
+    path('transcript', views.transcript)
 ]

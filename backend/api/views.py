@@ -60,11 +60,11 @@ def object_detail(request, format=None):
                     f"Word: {word}, start_time: {start_time.total_seconds()}, end_time: {end_time.total_seconds()}"
                 )
                 print(list)
-        json_data = json.dumps(list)
+        # json_data = json.dumps(list)
 
         return Response(list)
 
 
 @api_view(['GET', 'POST', 'DELETE'])
-def some_view(request, format=None):
+def transcript(request, format=None):
     return Response("hello world")
