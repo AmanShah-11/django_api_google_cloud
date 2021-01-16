@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     path('object', views.object_detail),
-    path('transcript', views.transcript)
+    path('createobject', views.create_object),
 ]
