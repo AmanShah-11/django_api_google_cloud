@@ -6,7 +6,7 @@ from google.cloud import speech
 import json
 import time
 
-BUCKET_NAME = "staging.hack-the-north-301905.appspot.com"
+BUCKET_NAME = ""
 
 
 # Create your views here.
