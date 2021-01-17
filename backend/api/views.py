@@ -21,11 +21,11 @@ def create_object(request, format=None):
         # print(buckets = list(storage_client.list_buckets())
         bucket = storage_client.get_bucket(BUCKET_NAME)
         blob = bucket.blob("new music")
-        body_unicode = request.body.decode('utf-8')
-        body = json.loads(body_unicode)
-        content = body["object"]["file"]
-        # blob.upload_from_filename("C:\\Users\\Aman\\PycharmProjects\\study-app\\Ed Sheeran - Shape of You.mp3")
-        blob.upload_from_filename(content)
+        # body_unicode = request.body.decode('utf-8')
+        # body = json.loads(body_unicode)
+        # content = body["object"]["file"]
+        blob.upload_from_filename("C:\\Users\\Aman\\Documents\\University\\Headspace_Mini_Meditation_Let_Go_of_Stress.mp3")
+        # blob.upload_from_filename(content)
     return Response(request.body.decode('utf-8'))
 
 
@@ -39,13 +39,13 @@ def object_detail(request, format=None):
         # print(buckets = list(storage_client.list_buckets())
         bucket = storage_client.get_bucket(BUCKET_NAME)
         blob = bucket.blob("new music")
-        body_unicode = request.body.decode('utf-8')
-        body = json.loads(body_unicode)
-        content = body["object"]["file"]
-        # blob.upload_from_filename("C:\\Users\\Aman\\PycharmProjects\\study-app\\Ed Sheeran - Shape of You.mp3")
-        blob.upload_from_filename(content)
+        # body_unicode = request.body.decode('utf-8')
+        # body = json.loads(body_unicode)
+        # content = body["object"]["file"]
+        blob.upload_from_filename("C:\\Users\\Aman\\Documents\\University\\Headspace_Mini_Meditation_Let_Go_of_Stress.mp3")
+        # blob.upload_from_filename(content)
         # return blob.public_url
-
+        print("Finished uploading")
         time.sleep(10)
         client = speech.SpeechClient.from_service_account_json(
             'C:\\Users\\Aman\\PycharmProjects\\study-app\\Hack The North-b2580a2a5f87.json'
@@ -62,7 +62,7 @@ def object_detail(request, format=None):
         operation = client.long_running_recognize(config=config, audio=audio)
 
         print("Allow time for operation to complete")
-        result = operation.result(timeout=300)
+        result = operation.result(timeout=1000)
         list = []
 
         for result in result.results:
@@ -78,7 +78,7 @@ def object_detail(request, format=None):
                 print(
                     f"Word: {word}, start_time: {start_time.total_seconds()}, end_time: {end_time.total_seconds()}"
                 )
-                print(list)
-        json_data = json.dumps(list)
+                # print(list)
+        # json_data = json.dumps(list)
 
-        return Response(json_data)
+        return Response(list)
